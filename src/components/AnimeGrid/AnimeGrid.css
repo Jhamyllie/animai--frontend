@@ -1,0 +1,28 @@
+.anime-grid-section {
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--color-background);
+}
+
+.anime-grid-section__container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.anime-grid-section__title {
+  margin: 0 0 var(--spacing-lg);
+  color: var(--color-text-primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.anime-grid-section {
+  scroll-margin-top: 80px;
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--color-background);
+}

@@ -1,0 +1,113 @@
+:root {
+  color-scheme: light;
+
+  /* Tipografia */
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* Cores principais */
+  --color-primary: #6d28d9;
+  --color-primary-dark: #4c1d95;
+  --color-primary-light: #a78bfa;
+
+  /* Textos */
+  --color-text-primary: #1f1235;
+  --color-text-secondary: #6b6375;
+  --color-text-on-primary: #ffffff;
+
+  /* Fundos */
+  --color-background: #ffffff;
+  --color-surface: #f8f7fc;
+
+  /* Bordas */
+  --color-border: #e5e4e7;
+
+  /* Hero */
+  --hero-gradient-start: #ddd6fe;
+  --hero-gradient-middle: #a78bfa;
+  --hero-gradient-end: #7c3aed;
+  --hero-title-color: #1f1235;
+  --hero-description-color: #312e81;
+
+  /* Botões */
+  --button-background: #ffffff;
+  --button-text: #4c1d95;
+  --button-hover-background: #f3e8ff;
+  --button-focus: #fbbf24;
+
+  /* Espaçamentos */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+
+  /* Bordas arredondadas */
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+
+  /* Sombras */
+  --shadow-button: 0 8px 20px rgb(0 0 0 / 25%);
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+
+  /* Cards */
+  --shadow-card: 0 4px 12px rgb(0 0 0 / 10%);
+  --shadow-card-hover: 0 10px 24px rgb(0 0 0 / 18%);
+  --color-rating: #d97706;
+}
+
+/* Tema escuro escolhido pelo usuário */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #9ca3af;
+
+  --color-background: #16171d;
+  --color-surface: #1f2028;
+  --color-border: #2e303a;
+
+  --hero-gradient-start: #111827;
+  --hero-gradient-middle: #312e81;
+  --hero-gradient-end: #6d28d9;
+  --hero-title-color: #ffffff;
+  --hero-description-color: #e5e7eb;
+
+  --button-background: #ffffff;
+  --button-text: #4c1d95;
+  --button-hover-background: #f3e8ff;
+
+  --shadow-card: 0 4px 12px rgb(0 0 0 / 35%);
+  --shadow-card-hover: 0 10px 24px rgb(0 0 0 / 50%);
+  --color-rating: #fbbf24;
+}
+
+/* Usa o tema do sistema enquanto não houver escolha manual */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --color-text-primary: #f3f4f6;
+    --color-text-secondary: #9ca3af;
+
+    --color-background: #16171d;
+    --color-surface: #1f2028;
+    --color-border: #2e303a;
+
+    --hero-gradient-start: #111827;
+    --hero-gradient-middle: #312e81;
+    --hero-gradient-end: #6d28d9;
+    --hero-title-color: #ffffff;
+    --hero-description-color: #e5e7eb;
+
+    --button-background: #ffffff;
+    --button-text: #4c1d95;
+    --button-hover-background: #f3e8ff;
+
+    --shadow-card: 0 4px 12px rgb(0 0 0 / 35%);
+    --shadow-card-hover: 0 10px 24px rgb(0 0 0 / 50%);
+    --color-rating: #fbbf24;
+  }
+}

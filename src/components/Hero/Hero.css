@@ -1,0 +1,83 @@
+.hero {
+  min-height: 420px;
+  padding: var(--spacing-xl) var(--spacing-md);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    var(--hero-gradient-start),
+    var(--hero-gradient-middle),
+    var(--hero-gradient-end)
+  );
+}
+
+.hero__content {
+  width: 100%;
+  max-width: 720px;
+}
+
+.hero__title {
+  margin: 0 0 var(--spacing-sm);
+
+  color: var(--hero-title-color);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.hero__description {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+
+  color: var(--hero-description-color);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.hero__button {
+  display: inline-block;
+  padding: 12px 28px;
+
+  color: var(--button-text);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+
+  background-color: var(--button-background);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-small);
+
+  cursor: pointer;
+
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.hero__button:hover {
+  background-color: var(--button-hover-background);
+  box-shadow: var(--shadow-button);
+  transform: translateY(-2px);
+}
+
+.hero__button:focus-visible {
+  outline: 3px solid var(--button-focus);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 360px;
+    padding: 40px 20px;
+  }
+
+  .hero__button {
+    width: 100%;
+    max-width: 280px;
+  }
+}

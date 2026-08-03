@@ -1,15 +1,16 @@
-import Hero from "../../components/Hero/Hero";
-import Navbar from "../../components/Navbar/Navbar";
 import AnimeGrid from "../../components/AnimeGrid/AnimeGrid";
+import Hero from "../../components/Hero/Hero";
+import { heroContent } from "../../constants/home";
+
 
 const Home = () => {
-  return (
+    return (
     <>
-      <Navbar />
-      <Hero />
+      <Hero {...heroContent} />
       <AnimeGrid />
     </>
   );
+
 };
 
 export default Home;

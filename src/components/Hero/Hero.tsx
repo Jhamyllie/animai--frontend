@@ -1,13 +1,23 @@
-const Hero = () => {
+import "./Hero.css";
+
+type HeroProps = {
+  title: string;
+  description: string;
+  buttonLabel: string;
+};
+
+const Hero = ({ title, description, buttonLabel }: HeroProps) => {
   return (
-    <section>
-      <h2>Descubra seu próximo anime favorito</h2>
+    <section className="hero">
+      <div className="hero__content">
+        <h1 className="hero__title">{title}</h1>
 
-      <p>
-        Explore milhares de títulos e monte sua própria coleção.
-      </p>
+        <p className="hero__description">{description}</p>
 
-      <button>Explorar</button>
+        <a className="hero__button" href="#animes">
+          {buttonLabel}
+        </a>
+      </div>
     </section>
   );
 };
