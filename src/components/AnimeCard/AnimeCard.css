@@ -46,3 +46,27 @@
   font-size: 0.9rem;
   font-weight: 700;
 }
+
+.anime-card__placeholder {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  place-items: center;
+
+  color: var(--color-text-on-primary);
+  font-size: 3rem;
+  font-weight: 700;
+
+  background: linear-gradient(
+    135deg,
+    var(--hero-gradient-middle),
+    var(--hero-gradient-end)
+  );
+}
+
+.anime-card__details {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}

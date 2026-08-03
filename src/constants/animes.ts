@@ -4,12 +4,16 @@ export const popularAnimes: Anime[] = [
   {
     id: 1,
     title: "Frieren",
+    genre: "Fantasia",
+    episodes: 28,
     imageUrl: "https://placehold.co/300x450/6d28d9/ffffff?text=Frieren",
     rating: 9.3,
   },
   {
     id: 2,
     title: "Fullmetal Alchemist",
+    genre: "Shounen",
+    episodes: 64,
     imageUrl:
       "https://placehold.co/300x450/312e81/ffffff?text=Fullmetal+Alchemist",
     rating: 9.1,
@@ -17,6 +21,8 @@ export const popularAnimes: Anime[] = [
   {
     id: 3,
     title: "Attack on Titan",
+    genre: "Ação",
+    episodes: 87,
     imageUrl:
       "https://placehold.co/300x450/7c3aed/ffffff?text=Attack+on+Titan",
     rating: 9,
@@ -24,6 +30,8 @@ export const popularAnimes: Anime[] = [
   {
     id: 4,
     title: "Hunter x Hunter",
+    genre: "Shounen",
+    episodes: 148,
     imageUrl:
       "https://placehold.co/300x450/4c1d95/ffffff?text=Hunter+x+Hunter",
     rating: 8.9,

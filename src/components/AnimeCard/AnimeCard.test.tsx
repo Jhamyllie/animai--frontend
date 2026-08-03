@@ -5,6 +5,8 @@ import AnimeCard from "./AnimeCard";
 
 const anime = {
   title: "Frieren",
+  genre: "Fantasia",
+  episodes: 28,
   imageUrl: "https://example.com/frieren.jpg",
   rating: 9.3,
 };
