@@ -1,0 +1,17 @@
+.home__empty-state {
+  min-height: 220px;
+  padding: var(--spacing-xl) var(--spacing-md);
+
+  display: grid;
+  place-items: center;
+
+  color: var(--color-text-secondary);
+  text-align: center;
+
+  background-color: var(--color-background);
+}
+
+.home__empty-state p {
+  margin: 0;
+  font-size: 1.1rem;
+}
