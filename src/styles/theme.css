@@ -56,6 +56,8 @@
   --shadow-card: 0 4px 12px rgb(0 0 0 / 10%);
   --shadow-card-hover: 0 10px 24px rgb(0 0 0 / 18%);
   --color-rating: #d97706;
+
+  --color-error: #b42318;
 }
 
 /* Tema escuro escolhido pelo usuário */
@@ -82,6 +84,8 @@
   --shadow-card: 0 4px 12px rgb(0 0 0 / 35%);
   --shadow-card-hover: 0 10px 24px rgb(0 0 0 / 50%);
   --color-rating: #fbbf24;
+
+  --color-error: #fca5a5;
 }
 
 /* Usa o tema do sistema enquanto não houver escolha manual */

@@ -7,23 +7,25 @@ export const useAnimes = () => {
   const [animes, setAnimes] = useState<Anime[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    let isMounted = true;
+    const controller = new AbortController();
 
     const loadAnimes = async () => {
-      try {
-        const data = await getAnimes();
+      setIsLoading(true);
+      setError(null);
 
-        if (isMounted) {
-          setAnimes(data);
-        }
+      try {
+        const data = await getAnimes(controller.signal);
+
+        setAnimes(data);
       } catch {
-        if (isMounted) {
+        if (!controller.signal.aborted) {
           setError("Não foi possível carregar os animes.");
         }
       } finally {
-        if (isMounted) {
+        if (!controller.signal.aborted) {
           setIsLoading(false);
         }
       }
@@ -32,13 +34,18 @@ export const useAnimes = () => {
     loadAnimes();
 
     return () => {
-      isMounted = false;
+      controller.abort();
     };
-  }, []);
+  }, [reloadKey]);
+
+  const retry = () => {
+    setReloadKey((currentKey) => currentKey + 1);
+  };
 
   return {
     animes,
     isLoading,
     error,
+    retry,
   };
 };

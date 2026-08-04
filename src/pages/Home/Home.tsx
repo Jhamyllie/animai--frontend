@@ -1,21 +1,36 @@
 import AnimeGrid from "../../components/AnimeGrid/AnimeGrid";
 import Hero from "../../components/Hero/Hero";
+import RequestState from "../../components/RequestState/RequestState";
 import { heroContent } from "../../constants/home";
 import { useAnimes } from "../../hooks/useAnimes";
 
 const Home = () => {
-  const { animes, isLoading, error } = useAnimes();
+  const { animes, isLoading, error, retry } = useAnimes();
 
   return (
     <>
       <Hero {...heroContent} />
 
-      {isLoading && <p role="status">Carregando animes...</p>}
+      {isLoading && (
+        <RequestState
+          variant="loading"
+          message="Carregando animes..."
+        />
+      )}
 
-      {error && <p role="alert">{error}</p>}
+      {!isLoading && error && (
+        <RequestState
+          variant="error"
+          message={error}
+          onRetry={retry}
+        />
+      )}
 
       {!isLoading && !error && (
-        <AnimeGrid title="Animes disponíveis" animes={animes} />
+        <AnimeGrid
+          title="Animes disponíveis"
+          animes={animes}
+        />
       )}
     </>
   );
