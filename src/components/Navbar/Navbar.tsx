@@ -1,9 +1,12 @@
-import { Moon, Sun } from "lucide-react";
+import { useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+
 import { useTheme } from "../../hooks/useTheme";
 import "./Navbar.css";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isLightTheme = theme === "light";
 
@@ -11,19 +14,37 @@ const Navbar = () => {
 
     <nav className="navbar">
       <h1 className="navbar__logo">AnimAi</h1>
-      <div className="navbar__actions">
-        <ul className="navbar__menu">
+      <button
+        className="navbar__menu-button"
+        type="button"
+        onClick={() => setIsMenuOpen((currentValue) => !currentValue)}
+        aria-expanded={isMenuOpen}
+        aria-controls="navbar-menu"
+        aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+      >
+        {isMenuOpen ? (
+          <X size={24} aria-hidden="true" />
+        ) : (
+          <Menu size={24} aria-hidden="true" />
+        )}
+      </button>
+
+      <div
+        className={`navbar__actions ${isMenuOpen ? "navbar__actions--open" : ""
+          }`}
+      >
+        <ul id="navbar-menu" className="navbar__menu">
           <li>
-            <a href="#inicio">Home</a>
+            <a href="#inicio" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </a>
           </li>
 
           <li>
-            <a href="#animes">Populares</a>
+            <a href="#animes" onClick={() => setIsMenuOpen(false)}>
+              Populares
+            </a>
           </li>
-{/* 
-          <li>
-            <a href="#favoritos">Favoritos</a>
-          </li> */}
         </ul>
 
         <button

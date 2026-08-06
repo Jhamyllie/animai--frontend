@@ -21,7 +21,6 @@ describe("Navbar", () => {
 
     expect(screen.getByText(/home/i)).toBeInTheDocument();
     expect(screen.getByText(/populares/i)).toBeInTheDocument();
-    // expect(screen.getByText(/favoritos/i)).toBeInTheDocument();
   });
 
   it("deve alternar para o tema escuro", () => {
@@ -41,5 +40,57 @@ describe("Navbar", () => {
         name: "Ativar tema claro",
       }),
     ).toBeInTheDocument();
+  });
+
+  it("deve abrir e fechar o menu de navegação", () => {
+    render(<Navbar />);
+
+    const menuButton = screen.getByRole("button", {
+      name: "Abrir menu",
+    });
+
+    expect(menuButton).toHaveAttribute("aria-expanded", "false");
+
+    fireEvent.click(menuButton);
+
+    expect(
+      screen.getByRole("button", { name: "Fechar menu" }),
+    ).toHaveAttribute("aria-expanded", "true");
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Fechar menu" }),
+    );
+
+    expect(
+      screen.getByRole("button", { name: "Abrir menu" }),
+    ).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("deve fechar o menu ao clicar em um link de navegação", () => {
+    render(<Navbar />);
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Abrir menu",
+      }),
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Fechar menu",
+      }),
+    ).toHaveAttribute("aria-expanded", "true");
+
+    fireEvent.click(
+      screen.getByRole("link", {
+        name: "Populares",
+      }),
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Abrir menu",
+      }),
+    ).toHaveAttribute("aria-expanded", "false");
   });
 });
