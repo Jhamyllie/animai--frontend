@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 
 import AnimeCard from "./AnimeCard";
 
@@ -40,5 +40,26 @@ describe("AnimeCard", () => {
     expect(
       screen.getByLabelText("Avaliação: 9.3"),
     ).toBeInTheDocument();
+  });
+
+  it("deve chamar onSelect ao clicar no card", () => {
+    const onSelect = vi.fn();
+
+    render(
+      <AnimeCard
+        title="Frieren"
+        genre="Shonen"
+        episodes={28}
+        onSelect={onSelect}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Ver detalhes de Frieren",
+      }),
+    );
+
+    expect(onSelect).toHaveBeenCalledOnce();
   });
 });

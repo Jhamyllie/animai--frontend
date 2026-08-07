@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 
 import type { Anime } from "../../types/anime";
 import AnimeGrid from "./AnimeGrid";
@@ -73,5 +73,25 @@ describe("AnimeGrid", () => {
     expect(screen.getByText("Fullmetal Alchemist")).toBeInTheDocument();
     expect(screen.getByText("Attack on Titan")).toBeInTheDocument();
     expect(screen.getByText("Hunter x Hunter")).toBeInTheDocument();
+  });
+
+  it("deve informar qual anime foi selecionado", () => {
+    const onSelectAnime = vi.fn();
+
+    render(
+      <AnimeGrid
+        title="Animes disponíveis"
+        animes={animes}
+        onSelectAnime={onSelectAnime}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Ver detalhes de ${animes[0].title}`,
+      }),
+    );
+
+    expect(onSelectAnime).toHaveBeenCalledWith(animes[0]);
   });
 });

@@ -7,12 +7,15 @@ import { useAnimes } from "../../hooks/useAnimes";
 import { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { filterAnimes } from "../../utils/filterAnimes";
+import type { Anime } from "../../types/anime";
+import AnimeDetails from "../../components/AnimeDetails/AnimeDetails";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedAnime, setSelectedAnime] = useState<Anime | null>(null);
   const { animes, isLoading, error, retry } = useAnimes();
 
-const filteredAnimes = filterAnimes(animes, searchTerm);
+  const filteredAnimes = filterAnimes(animes, searchTerm);
 
   return (
     <>
@@ -41,6 +44,7 @@ const filteredAnimes = filterAnimes(animes, searchTerm);
           <AnimeGrid
             title="Animes disponíveis"
             animes={filteredAnimes}
+            onSelectAnime={setSelectedAnime}
           />
         ) : (
           <section className="home__empty-state" role="status">
@@ -49,6 +53,12 @@ const filteredAnimes = filterAnimes(animes, searchTerm);
             </p>
           </section>
         )
+      )}
+      {selectedAnime && (
+        <AnimeDetails
+          anime={selectedAnime}
+          onClose={() => setSelectedAnime(null)}
+        />
       )}
     </>
   );

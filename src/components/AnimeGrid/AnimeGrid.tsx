@@ -6,9 +6,14 @@ import "./AnimeGrid.css";
 type AnimeGridProps = {
   title: string;
   animes: Anime[];
+  onSelectAnime?: (anime: Anime) => void;
 };
 
-const AnimeGrid = ({ title, animes }: AnimeGridProps) => {
+const AnimeGrid = ({
+  title,
+  animes,
+  onSelectAnime,
+}: AnimeGridProps) => {
   return (
     <section className="anime-grid-section" id="animes">
       <div className="anime-grid-section__container">
@@ -23,6 +28,7 @@ const AnimeGrid = ({ title, animes }: AnimeGridProps) => {
               episodes={anime.episodes}
               imageUrl={anime.imageUrl}
               rating={anime.rating}
+              onSelect={() => onSelectAnime?.(anime)}
             />
           ))}
         </div>
