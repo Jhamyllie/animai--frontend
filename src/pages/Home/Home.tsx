@@ -9,6 +9,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { filterAnimes } from "../../utils/filterAnimes";
 import type { Anime } from "../../types/anime";
 import AnimeDetails from "../../components/AnimeDetails/AnimeDetails";
+import AnimeGridSkeleton from "../../components/AnimeGridSkeleton/AnimeGridSkeleton";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,12 +25,7 @@ const Home = () => {
         value={searchTerm}
         onChange={setSearchTerm}
       />
-      {isLoading && (
-        <RequestState
-          variant="loading"
-          message="Carregando animes..."
-        />
-      )}
+      {isLoading && <AnimeGridSkeleton />}
 
       {!isLoading && error && (
         <RequestState
