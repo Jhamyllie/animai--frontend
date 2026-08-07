@@ -1,0 +1,48 @@
+.anime-sort {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.anime-sort label {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.anime-sort select {
+  min-width: 180px;
+  padding: 10px 12px;
+
+  color: var(--color-text-primary);
+  font: inherit;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.anime-sort select:hover {
+  border-color: var(--color-primary);
+}
+
+.anime-sort select:focus-visible {
+  outline: 3px solid var(--button-focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .anime-sort {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .anime-sort select {
+    width: 100%;
+  }
+}
