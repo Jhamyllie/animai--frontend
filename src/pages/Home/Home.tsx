@@ -28,6 +28,7 @@ const Home = () => {
     useState<Anime | null>(null);
   const [sortOption, setSortOption] =
     useState<AnimeSortOption>("default");
+
   const [selectedGenre, setSelectedGenre] = useState("");
 
   const { animes, isLoading, error, retry } = useAnimes();
@@ -40,6 +41,17 @@ const Home = () => {
     filteredAnimes,
     selectedGenre,
   );
+
+  const hasActiveFilters =
+    searchTerm.trim() !== "" ||
+    selectedGenre !== "" ||
+    sortOption !== "default";
+
+  const handleClearFilters = () => {
+    setSearchTerm("");
+    setSelectedGenre("");
+    setSortOption("default");
+  };
 
   const sortedAnimes = sortAnimes(
     genreFilteredAnimes,
@@ -68,6 +80,26 @@ const Home = () => {
         />
       </div>
 
+      {!isLoading && !error && (
+        <div className="home__results-info">
+          <p>
+            {sortedAnimes.length}{" "}
+            {sortedAnimes.length === 1
+              ? "anime encontrado"
+              : "animes encontrados"}
+          </p>
+
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={handleClearFilters}
+            >
+              Limpar filtros
+            </button>
+          )}
+        </div>
+      )}
+      
       {isLoading && <AnimeGridSkeleton />}
 
       {!isLoading && error && (
